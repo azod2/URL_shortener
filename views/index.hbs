@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="d-flex m-5">
+        <div class="flex-column justify-content-center w-100" >
+            <h1 class="text-center">URL Shortener</h1>
+            <img class="mx-auto mt-4 d-block" width="100px" src="https://assets-lighthouse.alphacamp.co/uploads/image/file/16716/ExportedContentImage_00.png" alt="">
+            <div class="d-flex flex-column justify-content-center mt-5">               
+                <div style="bg-red">
+
+                {{#if this.isEmpty}}
+                    <h4 class="text-center text-light bg-danger" >請輸入網址</h4>
+                {{/if}}
+                </div>
+                <form class="m-2  align-items-center" action="/" method="POST">
+                    <input type="text" class="form-control mx-auto" style="width: 500px;" placeholder="Input URL here"  aria-label="User" aria-describedby="addon-wrapping" name="url">
+                    <center><button type="submit" class="btn btn-outline-primary mt-2" style="width: 150px;">Shorten</button></center> 
+                </form>
+            </div>
+         </div>
+    </div>    
+</div>
