@@ -30,13 +30,9 @@ router.post('/', (req, res) => {
     let url = req.body.url
     let shorturl = ''
     let isEmpty = false
-
     //檢查是否沒輸入或空白內容
-    if(url.length < 1){
-        console.log('請輸入網址')
-        // res.send(`alert(your alert message); window.location.href =/page_location; `);
+    if (url.length < 1 || url.split(' ').join('').length === 0){
         isEmpty = true
-        console.log('isEmpty: '+isEmpty)
         res.render('index', {isEmpty})
         return
     }
