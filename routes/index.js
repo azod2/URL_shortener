@@ -7,7 +7,6 @@ const webRedirect = require('./modules/webRedirect')
 
 
 router.use('/', home)
-router.use('/https://et.jo', webRedirect)
 
 // 匯出路由器
 module.exports = router

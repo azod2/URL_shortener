@@ -11,14 +11,13 @@ router.get('/',(req, res) => {
     res.render('index') 
 })
 
-
+// 短網址路由
 router.get('/:url',(req, res) => {
-    let url = req.params.url
-    console.log('redirect /')
-    WebList.findOne({originalLink : url})
+    let url = shuffle.mainweb + req.params.url
+    WebList.findOne({shortLink : url})
         .then(result => {
             if(result){
-                res.render('result', { shortLink : result.shortLink , originalLink : result.originalLink})
+                res.redirect( result.originalLink )
             } else {
                 res.send('404 not found') 
             }
@@ -31,7 +30,7 @@ router.post('/', (req, res) => {
     let shorturl = ''
     let isEmpty = false
     //檢查是否沒輸入或空白內容
-    if (url.length < 1 || url.split(' ').join('').length === 0){
+    if (url.trim() < 1){
         isEmpty = true
         res.render('index', {isEmpty})
         return
@@ -52,7 +51,8 @@ router.post('/', (req, res) => {
             WebList.findOne({shortLink : shorturl})
             .then(result => {
                 if (result){
-                    shorturl = shuffle()                                
+                    shorturl = shuffle()  
+                    WebList.create({originalLink : url , shortLink : shorturl})                              
                 } 
         })
         .then(() => res.render('result', { shortLink : shorturl , originalLink : `${url}`}))

@@ -1,3 +1,4 @@
+let mainweb = 'https://et.jo/'
 //產生短網址
 function shuffles() {
     let rendomString = '1234567890qazwsxedcrfvtgbyhnujmikolpQAZWSXEDCRFVTGBYHNUJMIKOLP'
@@ -12,7 +13,8 @@ function shuffles() {
         result += array[i]
     }
     //回傳短網址
-    return 'https://et.jo/' + result    
+    return mainweb + result    
   } 
 
   module.exports = shuffles
+  module.exports.mainweb = mainweb
